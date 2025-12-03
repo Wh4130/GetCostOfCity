@@ -2,7 +2,7 @@ from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 import logging
 
-from scripts import Obj, GetLivingExpenses
+from scripts import GetLivingExpenses
 
 
 logger = logging.getLogger("uvicorn")
