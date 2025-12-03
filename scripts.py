@@ -1,6 +1,6 @@
 import requests
 from pydantic import BaseModel
-from constants import CURRENCY_MAP
+from constants import CURRENCY_MAP, get_random_headers
 import re
 
 
@@ -8,7 +8,7 @@ class GetLivingExpenses:
 
     @staticmethod
     def scrape(city: str):
-        html =  requests.get(f"https://www.numbeo.com/cost-of-living/in/{city}").text
+        html =  requests.get(f"https://www.numbeo.com/cost-of-living/in/{city}", headers = get_random_headers()).text
         return html
     
     @staticmethod
