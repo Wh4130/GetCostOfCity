@@ -8,17 +8,17 @@ from scripts import Obj, GetLivingExpenses
 logger = logging.getLogger("uvicorn")
 app = FastAPI()
 
-# *** ---------------------------------------------------------------------------------------------------------
+# *** --------------------------------------------------------------------------------------------------------
 # --- APIs
 
-@app.post("/source_html")
-def get_html(doc: Obj):
-    result_json = GetLivingExpenses.scrape(doc)
+@app.get("/source_html")
+def get_html(city: str):
+    result_json = GetLivingExpenses.scrape(city)
     return {"result": result_json}
 
-@app.post("/expenses")
-def get_living_expenses(doc: Obj):
-    result_json = GetLivingExpenses.RUN(doc)
+@app.get("/expenses")
+def get_living_expenses(city: str):
+    result_json = GetLivingExpenses.RUN(city)
     return result_json
 
 if __name__ == "__main__":

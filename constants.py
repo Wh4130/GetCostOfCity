@@ -1,6 +1,7 @@
 CITIES = ["Tokyo", 
           'Nuremberg', 
           "Berlin", 
+          "Taipei",
           "New-York", 
           "Uppsala", 
           "Amsterdam", 
@@ -20,6 +21,7 @@ CITIES = ["Tokyo",
 CURRENCY_MAP = {
     "&#8364": "EUR",
     "&#36": "USD",
+    "NT$": "NTD",
     "kr": "SEK",
     "&#165": "JPY"
 }

@@ -3,14 +3,12 @@ from pydantic import BaseModel
 from constants import CURRENCY_MAP
 import re
 
-class Obj(BaseModel):
-    city: str
 
 class GetLivingExpenses:
 
     @staticmethod
-    def scrape(doc: Obj):
-        html =  requests.get(f"https://www.numbeo.com/cost-of-living/in/{doc.city}").text
+    def scrape(city: str):
+        html =  requests.get(f"https://www.numbeo.com/cost-of-living/in/{city}").text
         return html
     
     @staticmethod
@@ -40,15 +38,15 @@ class GetLivingExpenses:
         }
     
     @staticmethod
-    def RUN(doc: Obj):
+    def RUN(city: str):
 
-        html = GetLivingExpenses.scrape(doc)
+        html = GetLivingExpenses.scrape(city)
         
         indiv_exp_data = GetLivingExpenses.get_individual_expenses(html)
         rent_data = GetLivingExpenses.get_rent(html)
 
         return {
-            "city": doc.city,
+            "city": city,
             "data": {
                 "living_expenses": indiv_exp_data["living_expenses"],
                 "rent": rent_data["rent"]
