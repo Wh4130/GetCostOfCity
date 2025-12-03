@@ -1,0 +1,6 @@
+uvicorn
+requests
+pydantic
+re
+fastapi
+logging
